@@ -100,10 +100,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),*/
-        child: Text(
-          "Hola Mundo",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        )
+        child: Container(
+            width: 250.0,
+            height: 500.0,
+            color: Colors.red,
+            child: Text(
+              "Hola Mundo",
+              style: TextStyle(fontWeight: FontWeight.bold),
+              textAlign: TextAlign.right,
+            )
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
