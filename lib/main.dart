@@ -73,10 +73,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          child: Image(
-            width: 200.0,
-            //image: NetworkImage("https://miro.medium.com/max/2500/1*ilC2Aqp5sZd1wi0CopD1Hw.png"),
-            image: AssetImage("assets/images/flutterlogo.png"),
+          child: Row(
+            children: <Widget>[
+              new Text("Hola Mundo",
+                style: TextStyle(
+                    color: Colors.pink,
+                    fontSize: 28.0                    
+                ),
+              ),
+              new Padding(
+                  padding: EdgeInsets.fromLTRB(20.0, 0.0, 90.0, 0.0)
+              ),
+              new Text("WOW")
+            ],
           ),
         ),
       ),
