@@ -74,11 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Container(
           child: GestureDetector(
-              onLongPress: (){
-                print("Long Pressed");
+              onVerticalDragStart: (DragStartDetails details){
+                print("Start");
+                print(details);
               },
-              onLongPressUp: (){
-                print("Long Pressed realizado");
+              onVerticalDragUpdate: (DragUpdateDetails details) {
+                print("Update");
+                print(details);
               },
               child: Image(
                   image: AssetImage("assets/images/flutterlogo.png")
