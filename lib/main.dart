@@ -73,8 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+          child: Stack(
+            alignment: AlignmentDirectional.bottomEnd,
             children: <Widget>[
               new Text("Hola Mundo",
                 style: TextStyle(
