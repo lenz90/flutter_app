@@ -72,18 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              AspectRatio(
-                  aspectRatio: 4 / 3,
-                  child: Image(
-                      image: AssetImage("assets/images/flutterlogo.png")
-                  )
-              ),
-              Text("Hola Mundo")
-            ],
-          ),
+        child: SizedBox(
+            width: 300.0,
+            child: Image(
+                image: AssetImage("assets/images/flutterlogo.png")
+            )
         ),
       ),
       floatingActionButton: FloatingActionButton(
