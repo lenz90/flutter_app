@@ -74,8 +74,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Container(
           child: GestureDetector(
-              onDoubleTap: (){
-                print("Double Tapped");
+              onLongPress: (){
+                print("Long Pressed");
+              },
+              onLongPressUp: (){
+                print("Long Pressed realizado");
               },
               child: Image(
                   image: AssetImage("assets/images/flutterlogo.png")
