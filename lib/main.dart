@@ -73,22 +73,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          child: Row(
+          child: Column(
             children: <Widget>[
-              Text(
-                "Hola Mundo",
-                style: TextStyle(color: Colors.pink, fontSize: 28.0),
+              AspectRatio(
+                  aspectRatio: 4 / 3,
+                  child: Image(
+                      image: AssetImage("assets/images/flutterlogo.png")
+                  )
               ),
-              ConstrainedBox(
-                constraints: BoxConstraints(minWidth: 10),
-                child: Text("WOW"),
-              ),
-              Baseline(
-                baseline: 100,
-                baselineType: TextBaseline.alphabetic,
-                child: Text("msj"),
-              ),
-              Text("Fin")
+              Text("Hola Mundo")
             ],
           ),
         ),
