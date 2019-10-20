@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Probando Flutter',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Dart: I´m your flutter :)'),
     );
   }
 }
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Transform(
-          transform: Matrix4.rotationZ(0.785),
+            transform: Matrix4.rotationZ(0.785),
             child: Image(
                 image: AssetImage("assets/images/flutterlogo.png")
             )
