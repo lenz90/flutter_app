@@ -72,11 +72,20 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Transform(
-            transform: Matrix4.rotationZ(0.785),
-            child: Image(
-                image: AssetImage("assets/images/flutterlogo.png")
-            )
+        child: Container(
+          child: Listener(
+              onPointerDown: (PointerDownEvent event) {
+                print("Clicked");
+                print(event);
+              },
+              onPointerMove: (PointerMoveEvent event){
+                print("Moved");
+                print(event);
+              },
+              child: Image(
+                  image: AssetImage("assets/images/flutterlogo.png")
+              )
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
