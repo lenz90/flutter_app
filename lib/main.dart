@@ -73,14 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          child: Listener(
-              onPointerDown: (PointerDownEvent event) {
-                print("Clicked");
-                print(event);
-              },
-              onPointerMove: (PointerMoveEvent event){
-                print("Moved");
-                print(event);
+          child: GestureDetector(
+              onTap: (){
+                print("Tapped");
               },
               child: Image(
                   image: AssetImage("assets/images/flutterlogo.png")
