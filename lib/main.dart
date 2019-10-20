@@ -72,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: SizedBox(
-            width: 300.0,
+        child: Transform(
+          transform: Matrix4.rotationZ(0.785),
             child: Image(
                 image: AssetImage("assets/images/flutterlogo.png")
             )
