@@ -73,20 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          child: Row(
-            children: <Widget>[
-              new Text("Hola Mundo",
-                style: TextStyle(
-                    color: Colors.pink,
-                    fontSize: 28.0                    
-                ),
-              ),
-              new Padding(
-                  padding: EdgeInsets.fromLTRB(20.0, 0.0, 90.0, 0.0)
-              ),
-              new Text("WOW")
-            ],
-          ),
+          child: Center(
+            child: Text("Hola Mundo"),
+          )
         ),
       ),
       floatingActionButton: FloatingActionButton(
