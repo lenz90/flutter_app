@@ -45,7 +45,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  int _selectedIndex=1;
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -88,11 +88,25 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
 
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 50.0,
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text("Principal")
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              title: Text("Negocios")
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              title: Text("School")
+          ),
 
-        ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: itemTapped,
+        fixedColor: Colors.black,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -108,5 +122,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void addInfoContact() {
     print("Se agrega");
+  }
+
+  void itemTapped(int value) {
+    setState(() {
+      _selectedIndex=value;
+    });
   }
 }
