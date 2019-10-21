@@ -65,70 +65,29 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.call),
-            tooltip: "Call contact",
-            onPressed: callContact,
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverAppBar(
+          pinned: true,
+          expandedHeight: 150,
+          flexibleSpace: FlexibleSpaceBar(
+            title: Text("Lista de ?"),
           ),
-          IconButton(
-            icon: Icon(Icons.add),
-            tooltip: "Add Information to contact",
-            onPressed: addInfoContact,
-          )
-        ],
-      ),
-      
-      drawer: Drawer(
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.alarm),
-              title: Text("Alarm"),
-              onTap: () {
-                // Cambia el estado de la aplicacion
-                print("Cambia la pagina");
-                Navigator.pop(context);
-              },
-            )
-          ],
         ),
-      ),
-      body: Center(
-
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text("Principal")
+        SliverFixedExtentList(
+          itemExtent: 50.0,
+          delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.cyanAccent,
+                  child: Text("Item $index"),
+                );
+              },
+            childCount: 20
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              title: Text("Negocios")
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              title: Text("School")
-          ),
-
-        ],
-        currentIndex: _selectedIndex,
-        onTap: itemTapped,
-        fixedColor: Colors.black,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.airplay),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        )
+      ],
     );
   }
 
