@@ -71,23 +71,22 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.call),
+            tooltip: "Call contact",
+            onPressed: callContact,
+          ),
+          IconButton(
+            icon: Icon(Icons.add),
+            tooltip: "Add Information to contact",
+            onPressed: addInfoContact,
+          )
+        ],
       ),
       body: Center(
-        child: Container(
-          child: GestureDetector(
-              onPanStart: (DragStartDetails details){
-                print("Start");
-                print(details);
-              },
-              onPanUpdate: (DragUpdateDetails details) {
-                print("Update");
-                print(details);
-              },
-              child: Image(
-                  image: AssetImage("assets/images/flutterlogo.png")
-              )
-          ),
-        ),
+
       ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
@@ -101,5 +100,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.airplay),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void callContact() {
+    print("CAlling");
+  }
+
+  void addInfoContact() {
+    print("Se agrega");
   }
 }
