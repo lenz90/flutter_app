@@ -75,23 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: DropdownButton<String>(
-            value: dropdownStr,
-            onChanged: (String newValue) {
-              setState(() {
-                dropdownStr = newValue;
-              });
-            },
-          items: <String> [
-            "Batman",
-            "Goku",
-            "Spiderman"
-          ].map<DropdownMenuItem<String>>((String value){
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
+        child: TextField(
+          onChanged: (String str){
+            print(str);
+          },
         )
       ),
     );
