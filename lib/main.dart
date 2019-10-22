@@ -43,9 +43,11 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+String dropdownStr="Batman";
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  int _selectedIndex = 1;
+
 
   void _incrementCounter() {
     setState(() {
@@ -73,32 +75,25 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: RaisedButton(
-          onPressed: buttonClick,
-          child: Text("Click me"),
-          color: Colors.red,
-          textColor: Colors.white,
-          highlightColor: Colors.black,
-        ),
+        child: DropdownButton<String>(
+            value: dropdownStr,
+            onChanged: (String newValue) {
+              setState(() {
+                dropdownStr = newValue;
+              });
+            },
+          items: <String> [
+            "Batman",
+            "Goku",
+            "Spiderman"
+          ].map<DropdownMenuItem<String>>((String value){
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        )
       ),
     );
-  }
-
-  void callContact() {
-    print("CAlling");
-  }
-
-  void addInfoContact() {
-    print("Se agrega");
-  }
-
-  void itemTapped(int value) {
-    setState(() {
-      _selectedIndex = value;
-    });
-  }
-
-  void buttonClick() {
-    print("Click en flat botton");
   }
 }
