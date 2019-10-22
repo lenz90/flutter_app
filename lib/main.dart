@@ -45,7 +45,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  int _selectedIndex=1;
+  int _selectedIndex = 1;
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -65,29 +66,21 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          pinned: true,
-          expandedHeight: 150,
-          flexibleSpace: FlexibleSpaceBar(
-            title: Text("Lista de ?"),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: FlatButton(
+          onPressed: buttonClick,
+          child: Text("Click"),
+          color: Colors.blue,
+          textColor: Colors.white,
+          highlightColor: Colors.black,
         ),
-        SliverFixedExtentList(
-          itemExtent: 50.0,
-          delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                  alignment: Alignment.center,
-                  color: Colors.cyanAccent,
-                  child: Text("Item $index"),
-                );
-              },
-            childCount: 20
-          ),
-        )
-      ],
+      ),
     );
   }
 
@@ -101,7 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void itemTapped(int value) {
     setState(() {
-      _selectedIndex=value;
+      _selectedIndex = value;
     });
+  }
+
+  void buttonClick() {
+    print("Click en flat botton");
   }
 }
