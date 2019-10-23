@@ -48,6 +48,7 @@ String dropdownStr="Batman";
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   bool checkBoxValue = false;
+  int group = 1;
 
   void _incrementCounter() {
     setState(() {
@@ -87,7 +88,38 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               activeColor: Colors.black,
             ),
-            Text("Notificaciones")
+            Text("Notificaciones"),
+
+            Radio(
+              value: 1,
+              groupValue: group,
+              onChanged: (T) {
+                print(T);
+                setState(() {
+                  group = T;
+                });
+              },
+            ),
+            Radio(
+              value: 2,
+              groupValue: group,
+              onChanged: (T) {
+                print(T);
+                setState(() {
+                  group = T;
+                });
+              },
+            ),
+            Radio(
+              value: 3,
+              groupValue: group,
+              onChanged: (T) {
+                print(T);
+                setState(() {
+                  group = T;
+                });
+              },
+            )
           ],
         )
       ),
