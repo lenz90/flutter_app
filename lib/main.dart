@@ -43,12 +43,19 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-String dropdownStr="Batman";
+String dropdownStr = "Batman";
+
+enum WhyFarther {
+  harder,
+  smarter,
+  selfStarter,
+  tradingCharter
+}
+
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  bool checkBoxValue = false;
-  int group = 1;
+  WhyFarther _seleccionado;
 
   void _incrementCounter() {
     setState(() {
@@ -76,52 +83,35 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Row(
-          children: <Widget>[
-            Checkbox(
-              value: checkBoxValue,
-              onChanged: (bool value) {
-                print(value);
-                setState(() {
-                  checkBoxValue = value;
-                });
-              },
-              activeColor: Colors.black,
-            ),
-            Text("Notificaciones"),
+        child: PopupMenuButton<WhyFarther>(
+            onSelected: (WhyFarther result) {
+              print(result);
+              setState(() {
+                _seleccionado = result;
+              });
+            },
+            icon: Icon(Icons.add),
+            itemBuilder: (BuildContext context) =>
+            <PopupMenuEntry<WhyFarther>>[
+              const PopupMenuItem(
+                value: WhyFarther.harder,
+                child: Text("Working a lot harder"),
+              ),
+              const PopupMenuItem(
+                value: WhyFarther.smarter,
+                child: Text("Being a lot smarter"),
+              ),
+              const PopupMenuItem(
+                value: WhyFarther.selfStarter,
+                child: Text("Being a self-starter"),
+              ),
+              const PopupMenuItem(
+                value: WhyFarther.harder,
+                child: Text("Placed in charge of the trading charter"),
+              )
+            ]
 
-            Radio(
-              value: 1,
-              groupValue: group,
-              onChanged: (T) {
-                print(T);
-                setState(() {
-                  group = T;
-                });
-              },
-            ),
-            Radio(
-              value: 2,
-              groupValue: group,
-              onChanged: (T) {
-                print(T);
-                setState(() {
-                  group = T;
-                });
-              },
-            ),
-            Radio(
-              value: 3,
-              groupValue: group,
-              onChanged: (T) {
-                print(T);
-                setState(() {
-                  group = T;
-                });
-              },
-            )
-          ],
-        )
+        ),
       ),
     );
   }
