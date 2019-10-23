@@ -47,7 +47,7 @@ String dropdownStr="Batman";
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  bool checkBoxValue = false;
 
   void _incrementCounter() {
     setState(() {
@@ -75,10 +75,20 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: TextField(
-          onChanged: (String str){
-            print(str);
-          },
+        child: Row(
+          children: <Widget>[
+            Checkbox(
+              value: checkBoxValue,
+              onChanged: (bool value) {
+                print(value);
+                setState(() {
+                  checkBoxValue = value;
+                });
+              },
+              activeColor: Colors.black,
+            ),
+            Text("Notificaciones")
+          ],
         )
       ),
     );
