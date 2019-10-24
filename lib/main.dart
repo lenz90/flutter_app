@@ -43,31 +43,28 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-String dropdownStr = "Batman";
-
-enum WhyFarther {
-  harder,
-  smarter,
-  selfStarter,
-  tradingCharter
-}
 
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  double _deslizante = 0.0;
+  DateTime _date = DateTime.now();
 
+  Future<Null> selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: _date,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null && picked != _date) {
+      setState(() {
+        _date = picked;
+        print(_date.toString());
+      });
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+    }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,18 +81,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Slider(
-          value: _deslizante,
-          onChanged: (double variable) {
-            setState(() {
-              _deslizante = variable;
-              print(_deslizante);
-            });
+        child: IconButton(
+          icon: Icon(Icons.alarm),
+          onPressed: () {
+            selectDate(context);
           },
-          min: 0,
-          max: 100,
-          divisions: 100,
-        )
+        ),
       ),
 
     );
