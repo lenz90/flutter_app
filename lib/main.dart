@@ -83,15 +83,22 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: IconButton(
-          icon: Icon(Icons.volume_down),
-          tooltip: "Volumen",
-          onPressed: () {
-            setState(() {
-              _volumen -=10;
-              print(_volumen);
-            });
-          },
+        child: ButtonBar(
+          alignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FlatButton(
+              onPressed: () {
+
+              },
+              child: Text("Primer boton"),
+            ),
+            FlatButton(
+              onPressed: () {
+
+              },
+              child: Text("Segundo boton"),
+            )
+          ],
         ),
       ),
     );
