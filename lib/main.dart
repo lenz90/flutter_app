@@ -55,7 +55,7 @@ enum WhyFarther {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  int _volumen = 100;
+  bool _estado = false;
 
   void _incrementCounter() {
     setState(() {
@@ -83,19 +83,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: FloatingActionButton(
-          onPressed: () {
-            print("Boton precionado");
+        child: Switch(
+          value: _estado,
+          onChanged: (bool estado) {
+            setState(() {
+              _estado = estado;
+            });
+            print(_estado);
           },
-          child: Icon(Icons.add),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print("Boton 2 presionado");
-        },
-        child: Icon(Icons.add),
-      ),
+
     );
   }
 }
