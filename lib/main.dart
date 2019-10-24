@@ -83,23 +83,18 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: ButtonBar(
-          alignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FlatButton(
-              onPressed: () {
-
-              },
-              child: Text("Primer boton"),
-            ),
-            FlatButton(
-              onPressed: () {
-
-              },
-              child: Text("Segundo boton"),
-            )
-          ],
+        child: FloatingActionButton(
+          onPressed: () {
+            print("Boton precionado");
+          },
+          child: Icon(Icons.add),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print("Boton 2 presionado");
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
