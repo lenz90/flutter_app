@@ -46,25 +46,24 @@ class MyHomePage extends StatefulWidget {
 
 
 class _MyHomePageState extends State<MyHomePage> {
-  DateTime _date = DateTime.now();
 
-  Future<Null> selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+
+
+  TimeOfDay _time = TimeOfDay.now();
+
+  Future<Null> selectTime(BuildContext context) async {
+    final TimeOfDay picked = await showTimePicker(
       context: context,
-      initialDate: _date,
-      firstDate: DateTime(1970),
-      lastDate: DateTime(2100),
+      initialTime: _time
     );
-    if (picked != null && picked != _date) {
+    if (picked != null && picked != _time) {
       setState(() {
-        _date = picked;
-        print(_date.toString());
+        _time = picked;
+        print(_time.toString());
       });
 
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: IconButton(
           icon: Icon(Icons.alarm),
           onPressed: () {
-            selectDate(context);
+            selectTime(context);
           },
         ),
       ),
