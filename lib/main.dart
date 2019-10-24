@@ -43,25 +43,39 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-
+enum Movies { CaptainMarvel, Shazam }
 
 class _MyHomePageState extends State<MyHomePage> {
 
-
-
-  TimeOfDay _time = TimeOfDay.now();
-
-  Future<Null> selectTime(BuildContext context) async {
-    final TimeOfDay picked = await showTimePicker(
-      context: context,
-      initialTime: _time
-    );
-    if (picked != null && picked != _time) {
-      setState(() {
-        _time = picked;
-        print(_time.toString());
-      });
-
+  Future<void> openDialog() async {
+    switch (await showDialog(
+        context: context,
+      builder: (BuildContext context) {
+          return SimpleDialog(
+            title: Text("Seleccione una película"),
+            children: <Widget>[
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, Movies.Shazam);
+                },
+                child: Text("Shazam"),
+              ),
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, Movies.CaptainMarvel);
+                },
+                child: Text("Capitana Marvel"),
+              )
+            ],
+          );
+      }
+    )) {
+      case Movies.CaptainMarvel:
+        print("Capitan Marvel");
+        break;
+      case Movies.Shazam:
+        print("Shazam");
+        break;
     }
   }
 
@@ -81,9 +95,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: IconButton(
-          icon: Icon(Icons.alarm),
+          icon: Icon(Icons.play_circle_filled),
           onPressed: () {
-            selectTime(context);
+            openDialog();
           },
         ),
       ),
