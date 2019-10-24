@@ -55,7 +55,7 @@ enum WhyFarther {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  WhyFarther _seleccionado;
+  int _volumen = 100;
 
   void _incrementCounter() {
     setState(() {
@@ -83,34 +83,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: PopupMenuButton<WhyFarther>(
-            onSelected: (WhyFarther result) {
-              print(result);
-              setState(() {
-                _seleccionado = result;
-              });
-            },
-            icon: Icon(Icons.add),
-            itemBuilder: (BuildContext context) =>
-            <PopupMenuEntry<WhyFarther>>[
-              const PopupMenuItem(
-                value: WhyFarther.harder,
-                child: Text("Working a lot harder"),
-              ),
-              const PopupMenuItem(
-                value: WhyFarther.smarter,
-                child: Text("Being a lot smarter"),
-              ),
-              const PopupMenuItem(
-                value: WhyFarther.selfStarter,
-                child: Text("Being a self-starter"),
-              ),
-              const PopupMenuItem(
-                value: WhyFarther.harder,
-                child: Text("Placed in charge of the trading charter"),
-              )
-            ]
-
+        child: IconButton(
+          icon: Icon(Icons.volume_down),
+          tooltip: "Volumen",
+          onPressed: () {
+            setState(() {
+              _volumen -=10;
+              print(_volumen);
+            });
+          },
         ),
       ),
     );
