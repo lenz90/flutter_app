@@ -55,7 +55,8 @@ enum WhyFarther {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  bool _estado = false;
+  double _deslizante = 0.0;
+
 
   void _incrementCounter() {
     setState(() {
@@ -83,15 +84,18 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Switch(
-          value: _estado,
-          onChanged: (bool estado) {
+        child: Slider(
+          value: _deslizante,
+          onChanged: (double variable) {
             setState(() {
-              _estado = estado;
+              _deslizante = variable;
+              print(_deslizante);
             });
-            print(_estado);
           },
-        ),
+          min: 0,
+          max: 100,
+          divisions: 100,
+        )
       ),
 
     );
