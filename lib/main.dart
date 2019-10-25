@@ -43,36 +43,20 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+class MyItem {
+  MyItem({this.isExpanded: false, this.header, this.body});
+
+  bool isExpanded;
+  final String header;
+  final String body;
+}
+
 class _MyHomePageState extends State<MyHomePage> {
-  void openBottomSheet(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-              child: Wrap(
-                children: <Widget>[
-                  ListTile(
-                    leading: Icon(Icons.alarm),
-                    title: Text("Alarma"),
-                    onTap: () {
-                      print("Abrir la alarma");
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.map),
-                    title: Text("Mapa"),
-                    onTap: () {
-                      print("Abrir Mapa");
-                      Navigator.of(context).pop();
-                    },
-                  )
-                ],
-              )
-          );
-        }
-    );
-  }
+  List<MyItem> _items = <MyItem>[
+    MyItem(header: "Cabecera 1", body: "Cuerpo 1"),
+    MyItem(header: "Cabecera 2", body: "Cuerpo 2"),
+    MyItem(header: "Cabecera 3", body: "Cuerpo 3"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -82,22 +66,29 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-          child: IconButton(
-            icon: Icon(Icons.open_in_new),
-            onPressed: () {
-              openBottomSheet(context);
-            },
-          )
-      ),
+    return ListView(
+      children: <Widget>[
+        ExpansionPanelList(
+          expansionCallback: (
+              int index,
+              bool isExpanded ) {
+            setState(() {
+              _items[index].isExpanded = !_items[index].isExpanded;
+            });
+          },
+          children: _items.map((MyItem item) {
+            return ExpansionPanel(
+                headerBuilder: (BuildContext context, bool isExpanded) {
+                  return Text(item.header);
+                },
+                isExpanded: item.isExpanded,
+                body: Container (
+                    child: Text(item.body)
+                )
+            );
+          }).toList(),
+        )
+      ],
     );
   }
 }
