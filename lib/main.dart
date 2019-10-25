@@ -44,29 +44,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<void> OpenAlert() async {
-    return showDialog(
+  void openBottomSheet(context) {
+    showModalBottomSheet(
         context: context,
-        barrierDismissible: false,
         builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Teléfono Alerta"),
-            content: SingleChildScrollView(
-              child: ListBody(
+          return Container(
+              child: Wrap(
                 children: <Widget>[
-                  Text("Tu teléfono está mal!!"),
-                  Text("ponle agua :D")
+                  ListTile(
+                    leading: Icon(Icons.alarm),
+                    title: Text("Alarma"),
+                    onTap: () {
+                      print("Abrir la alarma");
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.map),
+                    title: Text("Mapa"),
+                    onTap: () {
+                      print("Abrir Mapa");
+                      Navigator.of(context).pop();
+                    },
+                  )
                 ],
-              ),
-            ),
-            actions: <Widget>[
-              FlatButton(
-                child: Text("Entendí"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
               )
-            ],
           );
         }
     );
@@ -90,12 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
           child: IconButton(
-            icon: Icon(Icons.add_alert),
+            icon: Icon(Icons.open_in_new),
             onPressed: () {
-              OpenAlert();
+              openBottomSheet(context);
             },
           )
-
       ),
     );
   }
