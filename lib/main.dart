@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Probando Flutter',
+      title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'Dart: I´m your flutter :)'),
+      home: MyHomePage(title: 'Epic Page'),
     );
   }
 }
@@ -43,40 +43,33 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-enum Movies { CaptainMarvel, Shazam }
-
 class _MyHomePageState extends State<MyHomePage> {
-
-  Future<void> openDialog() async {
-    switch (await showDialog(
+  Future<void> OpenAlert() async {
+    return showDialog(
         context: context,
-      builder: (BuildContext context) {
-          return SimpleDialog(
-            title: Text("Seleccione una película"),
-            children: <Widget>[
-              SimpleDialogOption(
-                onPressed: () {
-                  Navigator.pop(context, Movies.Shazam);
-                },
-                child: Text("Shazam"),
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Teléfono Alerta"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text("Tu teléfono está mal!!"),
+                  Text("ponle agua :D")
+                ],
               ),
-              SimpleDialogOption(
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Entendí"),
                 onPressed: () {
-                  Navigator.pop(context, Movies.CaptainMarvel);
+                  Navigator.of(context).pop();
                 },
-                child: Text("Capitana Marvel"),
               )
             ],
           );
-      }
-    )) {
-      case Movies.CaptainMarvel:
-        print("Capitan Marvel");
-        break;
-      case Movies.Shazam:
-        print("Shazam");
-        break;
-    }
+        }
+    );
   }
 
   @override
@@ -94,14 +87,16 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: IconButton(
-          icon: Icon(Icons.play_circle_filled),
-          onPressed: () {
-            openDialog();
-          },
-        ),
-      ),
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+          child: IconButton(
+            icon: Icon(Icons.add_alert),
+            onPressed: () {
+              OpenAlert();
+            },
+          )
 
+      ),
     );
   }
 }
