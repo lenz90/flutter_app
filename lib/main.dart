@@ -65,27 +65,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-          child: RaisedButton(
-            child: Text("Click Me"),
+
+          child: CupertinoButton(
+            child: Text("Click me"),
             onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) => CupertinoAlertDialog(
-                    title: Text("Alert"),
-                    content: Text("Phone is too hot"),
-                    actions: <Widget>[
-                      CupertinoDialogAction(
-                        isDefaultAction: true,
-                        child: Text("Bye"),
-                        onPressed: () {
-                          print("Bye");
-                          Navigator.of(context).pop();
-                        },
-                      )
-                    ],
-                  )
-              );
+              print("You have clicked me");
             },
+            color: Colors.red,
+            borderRadius: BorderRadius.all(Radius.circular(40)),
           )
       ),
     );
