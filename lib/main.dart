@@ -57,7 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
-          backgroundColor: Colors.red,
+          leading: Icon(Icons.arrow_back_ios),
+          middle: Text("Epic App", style: TextStyle(color: Colors.white),),
+          trailing: Icon(Icons.account_circle),
+          backgroundColor: Colors.black,
         ),
         child: SafeArea(
             child: Container (
