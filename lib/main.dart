@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() => runApp(MyApp());
 
@@ -65,22 +66,40 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
           child: RaisedButton(
-              onPressed: () {
-                final snkBar = SnackBar(
-                  content: Text("Pizza Time"),
-                  action: SnackBarAction(
-                    label: "Order",
+            child: Text("Clieckeame"),
+            onPressed: () {
+              final act = CupertinoActionSheet(
+                title: Text("Food Choices"),
+                message: Text("What would you like to eat"),
+                actions: <Widget>[
+                  CupertinoActionSheetAction(
+                    child: Text("Pizza"),
                     onPressed: () {
-                      print("Pizza is on its way");
+                      print("You have selected Pizza");
+                      Navigator.pop(context);
                     },
                   ),
-                );
+                  CupertinoActionSheetAction(
+                    child: Text("Cookie Dough"),
+                    onPressed: () {
+                      print("You have selected cookie dough");
+                    },
+                  )
+                ],
+                cancelButton: CupertinoActionSheetAction(
+                  child: Text("Cancel"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              );
 
-                _scaffold.currentState.showSnackBar(snkBar);
-              },
-              child: Text("Click Me")
+              showCupertinoModalPopup(
+                  context: context,
+                  builder: (BuildContext context) => act
+              );
+            },
           )
-
       ),
     );
   }
