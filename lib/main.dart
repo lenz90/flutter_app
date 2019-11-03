@@ -44,31 +44,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentStep = 0;
-
-  List<Step> steps = <Step>[
-    Step(
-        title: Text("Step 1"),
-        content: Text("Instructions for step 1")
-    ),
-    Step(
-        title: Text("Step 2"),
-        content: Text("Instructions for step 2")
-    ),
-    Step(
-        title: Text("Step 3"),
-        content: Text("Instructions for step 3")
-    ),
-    Step(
-        title: Text("Step 4"),
-        content: Text("Instructions for step 4")
-    ),
-    Step(
-        title: Text("Step 5"),
-        content: Text("Instructions for step 5")
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -83,16 +58,48 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
-        body: Stepper(
-          currentStep: _currentStep,
-          steps: steps,
-          onStepContinue: () {
-            setState(() {
-              if (_currentStep < steps.length - 1) {
-                _currentStep++;
-              }
-            });
-          },
+        body: ListView(
+          children: ListTile.divideTiles(
+              context: context,
+              tiles: [
+                ListTile(
+                  title: Text("Aquaman"),
+                  subtitle: Text("He is the King of the Sea"),
+                  leading: Icon(Icons.movie),
+                ),
+                ListTile(
+                  title: Text("Aquaman"),
+                  subtitle: Text("He is the King of the Sea"),
+                  leading: Icon(Icons.movie),
+                ),
+                ListTile(
+                  title: Text("Aquaman"),
+                  subtitle: Text("He is the King of the Sea"),
+                  leading: Icon(Icons.movie),
+                ),
+                ListTile(
+                  title: Text("Aquaman"),
+                  subtitle: Text("He is the King of the Sea"),
+                  leading: Icon(Icons.movie),
+                ),
+                ListTile(
+                  title: Text("Aquaman"),
+                  subtitle: Text("He is the King of the Sea"),
+                  leading: Icon(Icons.movie),
+                ),
+                ListTile(
+                  title: Text("Aquaman"),
+                  subtitle: Text("He is the King of the Sea"),
+                  leading: Icon(Icons.movie),
+                ),
+                ListTile(
+                  title: Text("Aquaman"),
+                  subtitle: Text("He is the King of the Sea"),
+                  leading: Icon(Icons.movie),
+                ),
+
+              ]
+          ).toList(),
         )
     );
   }
