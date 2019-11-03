@@ -61,13 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-          child: Chip(
-            label: Text("Lizardo Mamani"),
-            avatar: CircleAvatar(
-              child: Icon(Icons.account_circle),
-
-            ),
-
+          child: Tooltip(
+            message: "Esto es un tooltip",
+            child: Text("Clickeame"),
           )
       ),
 
