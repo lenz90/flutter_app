@@ -60,14 +60,17 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Container(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text("1"),
-                Text("2"),
-                Text("3"),
-                Text("4"),
-                Text("5"),
+                Expanded(
+                    flex: 3,
+                    child: Text("1")
+                ),
+                Expanded(
+                    child: Text("2")
+                ),
+                Expanded(
+                    child: Text("3")
+                ),
               ],
             )
         )
