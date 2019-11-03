@@ -44,8 +44,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Icon icn = Icon(Icons.supervisor_account, color: Colors.red);
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -63,7 +61,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-          child: IconButton(icon: icn, onPressed: null)
+          child: Chip(
+            label: Text("Lizardo Mamani"),
+            avatar: CircleAvatar(
+              child: Icon(Icons.account_circle),
+
+            ),
+
+          )
       ),
 
     );
