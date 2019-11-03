@@ -43,21 +43,6 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class Name {
-  String fName;
-  String sName;
-
-  Name({this.fName, this.sName});
-}
-
-var names = <Name> [
-  Name(fName: "Lizardo", sName: "Mamani"),
-  Name(fName: "Bruce", sName: "Wayne"),
-  Name(fName: "Carol", sName: "Danvers"),
-  Name(fName: "Nick", sName: "Fury"),
-  Name(fName: "Crash", sName: "Bandicoot"),
-];
-
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -73,35 +58,33 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
-        body: DataTable(
-            columns: <DataColumn> [
-              DataColumn(
-                  label: Text("Nombre"),
-                  onSort: (i, b) {
-                    setState(() {
-                      names.sort((a, b) => a.fName.compareTo(b.fName));
-                    });
-                  }
-              ),
-              DataColumn(
-                  label: Text("Apellido"),
-                  onSort: (i, b) {
-                    setState(() {
-                      names.sort((a, b) => a.sName.compareTo(b.sName));
-                    });
-                  }
-              )
-            ],
-            rows: names.map((name) => DataRow(
-                cells: [
-                  DataCell(
-                    Text(name.fName),
+        body: Center(
+            child: Card(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ListTile(
+                      leading: Icon(Icons.movie),
+                      title: Text("Shazam"),
+                      subtitle: Text("Shazam fué llamado primero Captain Marvel")
                   ),
-                  DataCell(
-                      Text(name.sName)
+                  ButtonTheme.bar(
+                      child: ButtonBar(
+                        children: <Widget>[
+                          FlatButton(
+                            child: Text("Mira la película"),
+                            onPressed: () {},
+                          ),
+                          FlatButton(
+                            child: Text("Mira el trailer"),
+                            onPressed: () {},
+                          ),
+                        ],
+                      )
                   )
-                ]
-            )).toList()
+                ],
+              ),
+            )
         )
     );
   }
