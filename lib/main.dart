@@ -58,11 +58,41 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
-        body: Center(
-            child: CircularProgressIndicator(
-              value: 0.85,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
-            )
+        body: GridView.count(
+          crossAxisCount: 2,
+          children: <Widget>[
+            Center(
+              child: Text("Hola 1"),
+            ),
+            Center(
+              child: Text("Hola 2"),
+            ),
+            Center(
+              child: Text("Hola 3"),
+            ),
+            Center(
+              child: Text("Hola 4"),
+            ),
+            Center(
+              child: Text("Hola 5"),
+            ),
+            Center(
+              child: Text("Hola 6"),
+            ),
+            Center(
+              child: Text("Hola 7"),
+            ),
+            Center(
+              child: Text("Hola 8"),
+            ),
+            Center(
+              child: Text("Hola 9"),
+            ),
+            Center(
+              child: Text("Hola 10"),
+            ),
+
+          ],
         )
     );
   }
