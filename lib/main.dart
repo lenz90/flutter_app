@@ -44,6 +44,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String lblValue = "Epic Text";
+
+  Row rw = Row(children: <Widget>[
+    Icon(Icons.star),
+    Icon(Icons.star),
+    Icon(Icons.star),
+    Icon(Icons.star),
+    Icon(Icons.star),
+  ],
+  );
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -61,16 +72,23 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Container(
             child: Row(
               children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Icon(Icons.star),
-                    Icon(Icons.star),
-                    Icon(Icons.star),
-                    Icon(Icons.star),
-                    Icon(Icons.star),
-                  ],
-                ),
-                Text("Epic Text")
+                rw,
+                Text(lblValue),
+                RaisedButton(
+                    onPressed: () {
+                      rw = Row(children: <Widget>[
+                        Icon(Icons.star),
+                        Icon(Icons.star),
+                        Icon(Icons.star),
+                        Icon(Icons.star),
+                      ],
+                      );
+                      setState(() {
+                        lblValue = "New Value";
+                      });
+                    },
+                    child: Text("Update")
+                )
               ],
             )
         )
