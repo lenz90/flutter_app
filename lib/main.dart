@@ -59,18 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Container(
+            color: Colors.red,
             child: Row(
+              mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                Expanded(
-                    flex: 3,
-                    child: Text("1")
-                ),
-                Expanded(
-                    child: Text("2")
-                ),
-                Expanded(
-                    child: Text("3")
-                ),
+                Icon(Icons.star),
+                Icon(Icons.star),
+                Icon(Icons.star),
+                Icon(Icons.star),
+                Icon(Icons.star),
               ],
             )
         )
