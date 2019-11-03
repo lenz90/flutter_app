@@ -58,48 +58,18 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
-        body: ListView(
-          children: ListTile.divideTiles(
-              context: context,
-              tiles: [
-                ListTile(
-                  title: Text("Aquaman"),
-                  subtitle: Text("He is the King of the Sea"),
-                  leading: Icon(Icons.movie),
-                ),
-                ListTile(
-                  title: Text("Aquaman"),
-                  subtitle: Text("He is the King of the Sea"),
-                  leading: Icon(Icons.movie),
-                ),
-                ListTile(
-                  title: Text("Aquaman"),
-                  subtitle: Text("He is the King of the Sea"),
-                  leading: Icon(Icons.movie),
-                ),
-                ListTile(
-                  title: Text("Aquaman"),
-                  subtitle: Text("He is the King of the Sea"),
-                  leading: Icon(Icons.movie),
-                ),
-                ListTile(
-                  title: Text("Aquaman"),
-                  subtitle: Text("He is the King of the Sea"),
-                  leading: Icon(Icons.movie),
-                ),
-                ListTile(
-                  title: Text("Aquaman"),
-                  subtitle: Text("He is the King of the Sea"),
-                  leading: Icon(Icons.movie),
-                ),
-                ListTile(
-                  title: Text("Aquaman"),
-                  subtitle: Text("He is the King of the Sea"),
-                  leading: Icon(Icons.movie),
-                ),
-
-              ]
-          ).toList(),
+        body: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text("1"),
+                Text("2"),
+                Text("3"),
+                Text("4"),
+                Text("5"),
+              ],
+            )
         )
     );
   }
