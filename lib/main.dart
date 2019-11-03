@@ -59,31 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Center(
-            child: Card(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  ListTile(
-                      leading: Icon(Icons.movie),
-                      title: Text("Shazam"),
-                      subtitle: Text("Shazam fué llamado primero Captain Marvel")
-                  ),
-                  ButtonTheme.bar(
-                      child: ButtonBar(
-                        children: <Widget>[
-                          FlatButton(
-                            child: Text("Mira la película"),
-                            onPressed: () {},
-                          ),
-                          FlatButton(
-                            child: Text("Mira el trailer"),
-                            onPressed: () {},
-                          ),
-                        ],
-                      )
-                  )
-                ],
-              ),
+            child: LinearProgressIndicator(
+              value: 0.5,
+              backgroundColor: Colors.amber,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+
             )
         )
     );
