@@ -70,27 +70,35 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Container(
-            child: Row(
-              children: <Widget>[
-                rw,
-                Text(lblValue),
-                RaisedButton(
-                    onPressed: () {
-                      rw = Row(children: <Widget>[
-                        Icon(Icons.star),
-                        Icon(Icons.star),
-                        Icon(Icons.star),
-                        Icon(Icons.star),
-                      ],
-                      );
-                      setState(() {
-                        lblValue = "New Value";
-                      });
-                    },
-                    child: Text("Update")
-                )
-              ],
+            child: RaisedButton(
+              child: Text("Siguiente pñagina"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondPage())
+                );
+              },
             )
+        )
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+        appBar: AppBar(
+            title: Text("Segunda página")
+        ),
+        body: Center(
+          child: RaisedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Volver")
+          ),
         )
     );
   }
