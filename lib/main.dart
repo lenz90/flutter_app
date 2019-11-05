@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'Página épica es asombrosa'),
+      home: MyHomePage(title: 'Epic Page Is Amazing'),
     );
   }
 }
@@ -45,7 +45,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String lblValue = "Texto épico";
+  String lblValue = "Epic Text";
 
   Row rw = Row(children: <Widget>[
     Icon(Icons.star),
@@ -71,14 +71,27 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Container(
-            child: RaisedButton(
-              child: Text("Siguiente página"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SecondPage())
-                );
-              },
+            child: Column(
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("Batman"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondPage(str: "Batman"))
+                    );
+                  },
+                ),
+                RaisedButton(
+                  child: Text("Superman"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondPage(str: "Superman"))
+                    );
+                  },
+                ),
+              ],
             )
         )
     );
