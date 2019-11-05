@@ -45,16 +45,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String lblValue = "Epic Text";
+  final GlobalKey<ScaffoldState> _scaffold = GlobalKey<ScaffoldState>();
 
-  Row rw = Row(children: <Widget>[
-    Icon(Icons.star),
-    Icon(Icons.star),
-    Icon(Icons.star),
-    Icon(Icons.star),
-    Icon(Icons.star),
-  ],
-  );
+  GoToSecondPage(BuildContext context) async {
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SecondPage(str: "Batman"))
+    );
+
+    _scaffold.currentState.showSnackBar(SnackBar(content: Text("$result")));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+        key: _scaffold,
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
@@ -76,10 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 RaisedButton(
                   child: Text("Batman"),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondPage(str: "Batman"))
-                    );
+                    GoToSecondPage(context);
                   },
                 ),
                 RaisedButton(

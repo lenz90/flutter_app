@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class SecondPage extends StatelessWidget {
   String str = "";
 
@@ -16,7 +15,7 @@ class SecondPage extends StatelessWidget {
         body: Center(
           child: RaisedButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context, "Bienvenido de nuevo");
               },
               child: Text("Regresar")
           ),
