@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'secondpage.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'Epic Page'),
+      home: MyHomePage(title: 'Página épica es asombrosa'),
     );
   }
 }
@@ -44,7 +45,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String lblValue = "Epic Text";
+  String lblValue = "Texto épico";
 
   Row rw = Row(children: <Widget>[
     Icon(Icons.star),
@@ -71,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Container(
             child: RaisedButton(
-              child: Text("Siguiente pñagina"),
+              child: Text("Siguiente página"),
               onPressed: () {
                 Navigator.push(
                     context,
@@ -79,26 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             )
-        )
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-        appBar: AppBar(
-            title: Text("Segunda página")
-        ),
-        body: Center(
-          child: RaisedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("Volver")
-          ),
         )
     );
   }
