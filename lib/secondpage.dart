@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 
 class SecondPage extends StatelessWidget {
-  String str = "";
-
-  SecondPage({Key key, this.str}): super(key: key);
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
-            title: Text(str)
+            title: Text("Second Page Is Awesome")
         ),
         body: Center(
           child: RaisedButton(
               onPressed: () {
-                Navigator.pop(context, "Bienvenido de nuevo");
+                Navigator.pop(context);
               },
-              child: Text("Regresar")
+              child: Text("Go Back")
           ),
         )
     );
