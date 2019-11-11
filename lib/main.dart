@@ -43,13 +43,21 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   AnimationController _controller;
   Animation<Color> animation;
+  Color val;
+  AnimationController _controller2;
+  Animation<Color> animation2;
 
   _MyHomePageState() {
     _controller = AnimationController(
       duration: Duration(milliseconds: 4500),
+      vsync: this,
+    );
+
+    _controller2 = AnimationController(
+      duration: Duration(milliseconds: 2000),
       vsync: this,
     );
 
@@ -59,8 +67,21 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     ).animate(_controller)
       ..addListener(() {
         setState(() {
-
+          val = animation.value;
         });
+      })..addStatusListener((status) {
+        if(status == AnimationStatus.completed) {
+          animation2 = ColorTween(
+              begin: animation.value,
+              end: Color.fromRGBO(0, 255, 0, 1.0)
+          ).animate(_controller2)
+            ..addListener(() {
+              setState(() {
+                val = animation2.value;
+              });
+            });
+          _controller2.forward();
+        }
       });
 
     _controller.forward();
@@ -81,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           title: Text(widget.title),
         ),
         body: Container(
-          decoration: BoxDecoration(color: animation.value),
+          decoration: BoxDecoration(color: val),
         )
     );
   }
