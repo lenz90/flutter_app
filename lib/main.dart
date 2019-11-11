@@ -103,6 +103,22 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         ),
         body: Container(
           decoration: BoxDecoration(color: val),
+          child: Column(
+            children: <Widget>[
+              RaisedButton(
+                child: Text("Revolver"),
+                onPressed: () {
+                  _controller.reverse();
+                },
+              ),
+              RaisedButton(
+                child: Text("Stop"),
+                onPressed: () {
+                  _controller.stop();
+                },
+              )
+            ],
+          ),
         )
     );
   }
