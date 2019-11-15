@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,49 +44,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Color> animation;
-  Color val;
-  AnimationController _controller2;
-  Animation<Color> animation2;
-
-  _MyHomePageState() {
-    _controller = AnimationController(
-      duration: Duration(milliseconds: 4500),
-      vsync: this,
-    );
-
-    _controller2 = AnimationController(
-      duration: Duration(milliseconds: 2000),
-      vsync: this,
-    );
-
-    animation = ColorTween(
-        begin: Color.fromRGBO(255, 0, 0, 1.0),
-        end: Color.fromRGBO(0, 0, 255, 1.0)
-    ).animate(_controller)
-      ..addListener(() {
-        setState(() {
-          val = animation.value;
-        });
-      })..addStatusListener((status) {
-        if(status == AnimationStatus.completed) {
-          animation2 = ColorTween(
-              begin: animation.value,
-              end: Color.fromRGBO(0, 255, 0, 1.0)
-          ).animate(_controller2)
-            ..addListener(() {
-              setState(() {
-                val = animation2.value;
-              });
-            });
-          _controller2.forward();
-        }
-      });
-
-    _controller.forward();
-  }
+class _MyHomePageState extends State<MyHomePage> {
+  static const platform = const MethodChannel('com.flutter.epic/epic');
 
   @override
   Widget build(BuildContext context) {
@@ -102,24 +62,29 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           title: Text(widget.title),
         ),
         body: Container(
-          decoration: BoxDecoration(color: val),
-          child: Column(
-            children: <Widget>[
-              RaisedButton(
-                child: Text("Revolver"),
-                onPressed: () {
-                  _controller.reverse();
-                },
-              ),
-              RaisedButton(
-                child: Text("Stop"),
-                onPressed: () {
-                  _controller.stop();
-                },
-              )
-            ],
-          ),
+            child: Column(
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("Reverse"),
+                  onPressed: () {
+                    Printy();
+                  },
+                ),
+              ],
+            )
         )
     );
+  }
+
+  void Printy() async {
+    String value;
+
+    try {
+      value = await platform.invokeMethod("Printy");
+    } catch (e) {
+      print(e);
+    }
+
+    print(value);
   }
 }
